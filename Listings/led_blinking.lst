@@ -1,0 +1,64 @@
+C51 COMPILER V9.60.7.0   LED_BLINKING                                                      06/15/2023 13:47:21 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE LED_BLINKING
+OBJECT MODULE PLACED IN .\Objects\led_blinking.obj
+COMPILER INVOKED BY: D:\Apps\C51\BIN\C51.EXE led_blinking.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings
+                    -\led_blinking.lst) TABS(2) OBJECT(.\Objects\led_blinking.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          
+   3          sbit LED1 = P1^0; // Define LED1 pin
+   4          sbit LED2 = P1^1; // Define LED2 pin
+   5          sbit LED3 = P1^2; // Define LED3 pin
+   6          sbit LED4 = P1^3; // Define LED4 pin
+   7          sbit LED5 = P1^4; // Define LED5 pin
+   8          sbit LED6 = P1^5; // Define LED6 pin
+   9          sbit LED7 = P1^6; // Define LED7 pin
+  10          sbit LED8 = P1^7; // Define LED8 pin
+  11          
+  12          void delay(unsigned int count)
+  13          {
+  14   1          unsigned int i, j;
+  15   1          for (i = 0; i < count; i++)
+  16   1              for (j = 0; j < 1000; j++);
+  17   1      }
+  18          
+  19          void main()
+  20          {
+  21   1          unsigned int i;
+  22   1      
+  23   1          while (1)
+  24   1          {
+  25   2              for (i = 1; i <= 8; i++)
+  26   2              {
+  27   3                  if (i % 2 == 0) // Check if the number is even
+  28   3                  {
+  29   4                      LED1 = LED3 = LED5 = LED7 = 0; // Turn off odd LEDs
+  30   4                      LED2 = LED4 = LED6 = LED8 = 1; // Turn on even LEDs
+  31   4                  }
+  32   3                  else
+  33   3                  {
+  34   4                      LED1 = LED3 = LED5 = LED7 = 1; // Turn on odd LEDs
+  35   4                      LED2 = LED4 = LED6 = LED8 = 0; // Turn off even LEDs
+  36   4                  }
+  37   3                  delay(500); // Delay for 500 milliseconds
+  38   3              }
+  39   2          }
+  40   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     92    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
